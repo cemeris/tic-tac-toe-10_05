@@ -21,7 +21,15 @@ function boardClickHandle(event) {
 let symbol = 'x';
 let referee = new Referee();
 let storage = new Storage('tictactoe');
+
+let entries = storage.getEntries();
 let moves = {};
+
+for (const id in entries) {
+  const entry = entries[id];
+  cells[id].textContent = entry.symbol;
+  moves[id] = entry.symbol;
+}
 
 function clickHandle() {
   if (this.textContent !== '') {
