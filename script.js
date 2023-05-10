@@ -30,7 +30,8 @@ function clickHandle() {
   this.textContent = symbol;
   const id = this.dataset.id;
   moves[id] = symbol;
-  storage.create(
+  storage.add(
+    id,
     {symbol: symbol}
   );
   if (referee.checkWinner(moves, symbol)) {

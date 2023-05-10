@@ -8,7 +8,6 @@ class Storage
     this.storage_name = storage_name;
 
     this.data = {
-      last_id: 0,
       entries: {}
     };
 
@@ -24,17 +23,13 @@ class Storage
     return this.data.entries;
   }
 
-  /**
-   * 
-   * @param {object} entry - Example {size: "M", color: "black", "type_number": 2318512}
-   * @returns - newly created entry ID
-   */
-  create (entry) {
-    const id = ++this.data.last_id;
-    this.data.entries[id] = entry;
-    this.save();
+  add (id, entry) {
+    this.data.entries[id] = {};
+    for (const key in entry) {
+      this.data.entries[id][key] = entry[key];
+    }
 
-    return id;
+    this.save();
   }
 
   /**
