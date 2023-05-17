@@ -30,6 +30,7 @@ for (const id in entries) {
   const entry = entries[id];
   cells[id].textContent = entry.symbol;
   moves[id] = entry.symbol;
+  count++;
 }
 
 function clickHandle() {
@@ -74,7 +75,7 @@ function resetHandle () {
     cell.textContent = '';
   }
   storage.clear();
-  symbol = 'x';
+  count = 0;
   moves = {};
   hideMessage();
   /**
